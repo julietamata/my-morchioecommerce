@@ -1,28 +1,33 @@
 import React from 'react'
 import CartWidget from './CartWidget'
-import { Button, Stack,} from '@chakra-ui/react'
+import { Button, Stack, Flex, Box, Spacer, Heading, } from '@chakra-ui/react'
 
 
 const NavBar = () => {
   return (
-    <div>
-        
-        <Stack spacing={4} direction='row' align='center'>
-            <h1> SARA MORCHIO </h1> 
-            <Button colorScheme='teal' size='sm' >
+    <div>        
+        <Flex minWidth='max-content' alignItems='center' gap='2' bg='teal'>
+        <Box>
+        <Heading p='4' color='white'> SARA MORCHIO </Heading>
+        </Box>
+        <Spacer /> 
+        <Stack gap='2' spacing={4} direction='row' align='center'>
+            <Button boxShadow= 'dark-lg' colorScheme='teal' size='sm' >
                 Zapatos
             </Button>
-            <Button colorScheme='teal' size='sm'>
+            <Button boxShadow= 'dark-lg' colorScheme='teal' size='sm'>
                 Bisutería
             </Button>
-            <Button colorScheme='teal' size='sm'>
+            <Button boxShadow= 'dark-lg' colorScheme='teal' size='sm'>
                 Lentes
             </Button>
             <CartWidget/>
         </Stack>
-        
+        </Flex>
     </div>
   )
 }
 
 export default NavBar
+    
+   
