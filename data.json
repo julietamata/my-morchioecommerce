@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1, 
+    "nombre": "Lentes luna", 
+    "precio": 400,
+    "stock": 8,
+    "category": "Accesorios",
+    "img": "https://cdn.stocksnap.io/img-thumbs/960w/people-woman_D85KN9KIDN.jpg"
+  }, 
+  {
+    "id": 2, 
+    "nombre": "Tacones Love", 
+    "precio": 350,
+    "stock": 4,
+    "category": "Zapatos",
+    "img":"https://cdn.stocksnap.io/img-thumbs/960w/people-woman_D85KN9KIDN.jpg"
+  }, 
+  {
+    "id": 3, 
+    "nombre": "Tacones Hate", 
+    "precio": 450,
+    "stock": 5,
+    "category": "Zapatos",
+    "img":"https://cdn.stocksnap.io/img-thumbs/960w/people-woman_D85KN9KIDN.jpg"
+  }, 
+  {
+    "id": 4, 
+    "nombre": "Bolso marroquí", 
+    "precio": 500,
+    "stock": 7,
+    "category": "Accesorios",
+    "img":"https://cdn.stocksnap.io/img-thumbs/960w/people-woman_D85KN9KIDN.jpg"
+  }, 
+  {
+    "id": 5, 
+    "nombre": "Sandalias marroquí", 
+    "precio": 600,
+    "stock": 4,
+    "category": "Zapatos",
+    "img":"https://cdn.stocksnap.io/img-thumbs/960w/people-woman_D85KN9KIDN.jpg"
+  },
+  {
+    "id": 6, 
+    "nombre": "Collar manto de luna", 
+    "precio": 600,
+    "stock": 4,
+    "category": "Bisutería",
+    "img":"https://cdn.stocksnap.io/img-thumbs/960w/people-woman_D85KN9KIDN.jpg"
+  }
+]
