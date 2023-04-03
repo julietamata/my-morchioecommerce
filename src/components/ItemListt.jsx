@@ -5,14 +5,12 @@ import { Container } from '@chakra-ui/react'
 const ItemListt = ({productos}) => {
   return (
     <>
-    {/* {console.log(productos)} */}
-    
+       {console.log(productos)}
     {<Container>
       
       {productos.map((prod) => {
         return(
         <Item
-        prueba={"holaaassss"}
         key={prod.id}
         id={prod.id}
         nombre={prod.nombre}
@@ -30,4 +28,4 @@ const ItemListt = ({productos}) => {
   )
 }
 
-export default ItemListt
+export default React.memo(ItemListt)

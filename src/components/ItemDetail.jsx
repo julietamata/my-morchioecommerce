@@ -1,68 +1,82 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import data from '../../data.json'
-import { Card, CardHeader, CardBody, CardFooter, Stack, Heading, Text, Image, Divider, Button, ButtonGroup } from '@chakra-ui/react'
+import { Card, CardHeader, CardBody, CardFooter, Stack, Heading, Text, Image, Divider, Button, ButtonGroup, Container } from '@chakra-ui/react'
 import ItemCount from './ItemCount';
+import { CartProvider } from '../context/CartContext';
 import { useParams } from 'react-router-dom'
+import Item from './Item';
+import {getDoc, getFirestore, doc} from 'firebase/firestore'
 
 
-const ItemDetail = () => {
+const ItemDetail = ({productos}) => {
   const {id} =useParams();
-  
-  const [datos, setDatos] = useState([]);
-    const getDatos = () =>{
-    return new Promise((resolve, reject) =>{
-      if (getDatos === 0) {
-        reject(new Error(" hay datos"));
-      }resolve(data);
-      // console.log(data)
-      {console.log(prod)}
-    });
-  };
-  
-  useEffect(() => {
-    getDatos().then((datos) => setDatos(datos))
-    },[] )
+  const [product, setProduct] = useState([]);
 
-  const idFilter = datos.filter((prod) => prod.id === id);
-  
+ useEffect(() => {
+  const db = getFirestore();
+  const oneCollection = doc(db, 'designs', `${id}`);
+ 
+  getDoc(oneCollection).then((snapshot) => {
+    if (snapshot.exists()) {
+      const docs = snapshot.data();
+      setProduct(docs);
+    }
+  });
+}, [])
+
+  const {agregarProductos} = useContext(CartProvider);
+   
+
+  const onAdd =(prod, quantity) => {
+    console.log(`compraste ${quantity}`)
+    agregarProductos(prod, quantity);
+    
+  }
+
   return (
     
     <>
+    {/* {console.log(productos)} */}
     
-    {idFilter.map((prod) =>(  
-      
-    <div key={prod.id}>
-      <Card maxW='sm'>
-      <CardBody>
-        <Image
-          src={prod.img}
-          alt='Prenda'
-          borderRadius='lg'
-        />
-        <Stack mt='6' spacing='3'>
-          <Heading size='md'>{prod.nombre}</Heading> 
-          <Text color='teal' fontSize='md'>
-            ${prod.precio}
-          </Text>
-          <Text> Categoría: {prod.category}</Text>
-        </Stack>
-      </CardBody>
-      <Divider />
-      <ItemCount stock={prod.stock} />
-      <CardFooter>
-        <ButtonGroup spacing='2'>
-          <Button colorScheme='teal'>
-            Comprar
-          </Button>
-        </ButtonGroup>
-      </CardFooter>
-</Card>
-</div>
+    {console.log()}
+      {productos.map((prod) => {
+        return(
+          <div key={prod.id}>
+          <Card maxW='sm'>
+          <CardBody>
+            <Image
+              src={prod.img}
+              alt='Prenda'
+              borderRadius='lg'
+            />
+            <Stack mt='6' spacing='3'>
+              <Heading size='md'>{prod.nombre}</Heading> 
+              <Text color='teal' fontSize='md'>
+                ${prod.precio}
+              </Text>
+              <Text> Categoría: {prod.category}</Text>
+            </Stack>
+          </CardBody>
+          <Divider />
+          <ItemCount 
+          onAdd={onAdd}
+          nombre = {prod.nombre}
+          stock = {prod.stock}
+          id= {prod.id}
+          precio={prod.precio} 
+          img = {prod.img}
+          prod={prod}
+          />
+         </Card>
+        </div>
+       )
+      })}
     
-    ))};
    
     </>
   )
 }
 
 export default ItemDetail
+
+

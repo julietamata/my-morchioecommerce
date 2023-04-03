@@ -6,6 +6,7 @@ import {BrowserRouter, Routes, Route} from "react-router-dom"
 import ItemDetailContainer from './components/ItemDetailContainer';
 import Home from './components/Home';
 import Cart from './components/Cart';
+import CartContext from './context/CartContext';
 
 
 
@@ -14,7 +15,7 @@ const App = ()=> {
   
   
   return (
-    <>
+    <CartContext>
     <ChakraProvider>
     <BrowserRouter>
     <NavBar/>
@@ -27,7 +28,7 @@ const App = ()=> {
     </Routes>
     </BrowserRouter>
     </ChakraProvider>
-    </>
+    </CartContext>
   )
 };
 

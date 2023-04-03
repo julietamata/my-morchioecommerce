@@ -3,35 +3,68 @@ import React, { useEffect, useState } from 'react'
 import ItemDetail from './ItemDetail'
 import data from '../../data.json'
 import { useParams } from 'react-router-dom'
+import Item from './Item'
+import {getDocs, getFirestore, collection} from "firebase/firestore"
+
 
 
 const ItemDetailContainer = () => {
-
   const [productos, setProductos] = useState([]);
-
-  const getDatos = () =>{
-    return new Promise((resolve, reject) =>{
-      if (getDatos === 0) {
-        reject(new Error(" hay datos"));
-      }resolve(data);
-    });
-  };
+  const {id} =useParams();
   
-  useEffect(() => {
-    getDatos().then((productos) => setProductos(productos))
-    },[] )
+// useEffect(() => {
+//   const db = getFirestore();
+//   const itemsCollection = collection(db, "designs");
+//   getDocs(itemsCollection)
+//   .then((snapshot) =>{
+//     const docs= snapshot.docs.map((doc) => doc.data());
+//     console.log(productos);
+//     setProductos(docs)
+//   });
 
+// }, []);
+
+  useEffect(() => {
+    const db = getFirestore();
+    const oneItem = doc(db, "designs", `${id}`);
+
+  getDoc(oneItem).then((snapshot) => {
+    if (snapshot.exists()) {
+      const docs = snapshot.data();
+      console.log(docs); 
+      setProductos(docs);
+    }
+  }) 
+  
+  }, []);
+
+    
+  
+  // useEffect(() => {
+  // const getDatos = () =>{
+  //   return new Promise((resolve, reject) =>{
+  //     if (getDatos === 0) {
+  //       reject(new Error("no hay datos"));
+  //     }resolve(data);
+  //   });
+  // }; 
+  //   getDatos().then((productos) => setProductos(productos))
+  //   },[] )
+
+    const filtroId = productos.filter((prod) => prod.id == id);
+ 
   return (
-    <div>
-      ItemDetailContainer
-      
-      {/* {id ? <ItemDetail datos={idFilter} /> : <ItemDetail datos={datos}/>} */}
-    <ItemDetail productos={productos}/>;
-    {console.log(productos)}
+    <div>    
+
+      {id ? <ItemDetail productos={filtroId} /> : <ItemDetail productos={productos}/>}
+   
     </div>
   )
 }
 
 export default ItemDetailContainer
+
+
+
 
 
