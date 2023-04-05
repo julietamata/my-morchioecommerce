@@ -2,7 +2,7 @@ import React from 'react'
 import { useContext }  from 'react'
 import { CartProvider } from '../context/CartContext'
 import CartForm from './CartForm'
-import { Card, CardHeader, CardBody, CardFooter, Image, Heading, Stack, Divider, ButtonGroup, Button, Text } from '@chakra-ui/react'
+import { Card, CardHeader, CardBody, Flex, Image, Heading, Stack, Divider, ButtonGroup, Button, Text } from '@chakra-ui/react'
 import Loading from '../components/Loading'
 
 
@@ -23,6 +23,9 @@ const Cart = () => {
     }
       return (
         <>
+          <Card>
+          <CardBody>
+         <Flex justifyContent='center' gap='4'>
         {cart.map( prod =>  
      <div key={prod.id}>
      <Card maxW='sm'>
@@ -33,34 +36,40 @@ const Cart = () => {
         />
         <Stack mt='6' spacing='3'>
           <Heading size='md'>{prod.nombre}</Heading>
-          <Text color='blue.600' fontSize='2xl'>
+          <Text color='gray.600' fontSize='md'>
           $ {prod.precio}
           </Text>
-          <Text color='blue.600' fontSize='2xl'>
+          <Text color='gray.600' fontSize='md'>
             Cantidad: {prod.quantity}
           </Text>
-          <Text>
+          <Text fontSize='xl'>
             ${prod.quantity * prod.precio}
           </Text>
           <Button onClick={() => eliminarProducto(prod.id)}>
             Eliminar producto
           </Button>
         </Stack>
-      </CardBody>
-      
-      
+      </CardBody>     
     </Card>
     </div>
       )}
-      <Divider />
-      <Text> Total: ${totalCarrito()} </Text>
-      <Text> Total de artículos: {productosCarrito()}</Text>
-      <Divider />
+      </Flex>
+      
+      <CardBody>
+        <Card>
+      <Text fontSize='xl' textAlign='center'> Total: ${totalCarrito()} </Text>
+      <Text fontSize='xl' textAlign='center'> Total de artículos: {productosCarrito()}</Text>
+      
       <Button onClick={() => borrarCarrito()}> 
       Borrar carrito 
       </Button>
+      </Card>
+      </CardBody>
+      
      <CartForm/>
      
+     </CardBody>
+     </Card>
         </>
       )
     // })}

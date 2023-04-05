@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom'
 
 const Item = ({id, nombre, precio, stock, category, img, }) => {
   return (
+    
     <div>
       
-      <div>
+      
       
           {<div key={id}>
           
@@ -36,10 +37,8 @@ const Item = ({id, nombre, precio, stock, category, img, }) => {
             </Card>
             
             </div>}
-             
-    </div>
-    {/* </Flex> */}
-    {/* </Grid>  */}
+                  
+       
     
 </div>
   )

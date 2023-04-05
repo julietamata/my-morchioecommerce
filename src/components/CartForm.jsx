@@ -1,7 +1,7 @@
 import React from 'react'
 // import {collection, addDoc, getFirestore} from "firebase/firestore"
 import { useState } from 'react'
-import {FormControl, FormLabel, FormErrorMessage, FormHelperText, Input, Button, Flex, Box, Grid  } from '@chakra-ui/react'
+import {FormControl, FormLabel, FormErrorMessage, FormHelperText, Input, Button, Flex, Box, Grid, Card, CardBody  } from '@chakra-ui/react'
   
 
 const CartForm = () => {
@@ -18,9 +18,8 @@ const [email, setEmail] = useState('')
 
   return (
     <div>
-
-        <Box w='330px' >
-
+        <Card> <CardBody> <Flex alignItems='center' justifyContent='center' >  
+         <Box w='330px' >
         <FormControl isInvalid={isError}>
       <FormLabel>Nombre</FormLabel>
       <Input type='email' value={name} onChange={handleName} />
@@ -49,7 +48,8 @@ const [email, setEmail] = useState('')
     </FormControl>  
     
     </Box>
-    
+    </Flex>
+</CardBody> </Card>
     </div>
 
 

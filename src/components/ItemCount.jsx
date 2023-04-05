@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import { useState } from 'react';
-import { Button, ButtonGroup, Flex, Stack, Text, CardFooter,  } from '@chakra-ui/react'
+import { Button, ButtonGroup, Flex, Stack, Text, CardFooter, Box  } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { CartProvider } from '../context/CartContext';
 import Item from './Item';
@@ -19,7 +19,8 @@ const ItemCount = ({stock, nombre, precio, img, id, onAdd, prod }) => {
   return (
     <>
     {console.log()}
-      <Flex>
+    
+      
       <Stack direction='row' spacing={4} align='center'>
       <ButtonGroup spacing='2'>
         <Button onClick={sumar} colorScheme='teal' variant='solid'>
@@ -37,7 +38,7 @@ const ItemCount = ({stock, nombre, precio, img, id, onAdd, prod }) => {
       </Button>
       </ButtonGroup>
       </Stack> 
-      </Flex>
+      
     </>
   )
 }

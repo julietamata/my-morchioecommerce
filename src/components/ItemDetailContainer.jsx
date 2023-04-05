@@ -24,32 +24,32 @@ const ItemDetailContainer = () => {
 
 // }, []);
 
-  useEffect(() => {
-    const db = getFirestore();
-    const oneItem = doc(db, "designs", `${id}`);
+  // useEffect(() => {
+  //   const db = getFirestore();
+  //   const oneItem = doc(db, "designs", `${id}`);
 
-  getDoc(oneItem).then((snapshot) => {
-    if (snapshot.exists()) {
-      const docs = snapshot.data();
-      console.log(docs); 
-      setProductos(docs);
-    }
-  }) 
+  // getDoc(oneItem).then((snapshot) => {
+  //   if (snapshot.exists()) {
+  //     const docs = snapshot.data();
+  //     console.log(docs); 
+  //     setProductos(docs);
+  //   }
+  // }) 
   
-  }, []);
+  // }, []);
 
     
   
-  // useEffect(() => {
-  // const getDatos = () =>{
-  //   return new Promise((resolve, reject) =>{
-  //     if (getDatos === 0) {
-  //       reject(new Error("no hay datos"));
-  //     }resolve(data);
-  //   });
-  // }; 
-  //   getDatos().then((productos) => setProductos(productos))
-  //   },[] )
+  useEffect(() => {
+  const getDatos = () =>{
+    return new Promise((resolve, reject) =>{
+      if (getDatos === 0) {
+        reject(new Error("no hay datos"));
+      }resolve(data);
+    });
+  }; 
+    getDatos().then((productos) => setProductos(productos))
+    },[] )
 
     const filtroId = productos.filter((prod) => prod.id == id);
  

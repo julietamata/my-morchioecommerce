@@ -57,10 +57,9 @@ const ItemListContainer = () => {
   
     <div>
       
-         <Flex minWidth='max-content' alignItems='center' gap='2'>
       {console.log(productos)}
     {category ? <ItemListt productos={filtroCategory} /> : <ItemListt productos={productos}/>}
-        </Flex>
+        
     </div>
   )
 }

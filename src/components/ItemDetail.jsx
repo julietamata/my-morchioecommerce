@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import data from '../../data.json'
-import { Card, CardHeader, CardBody, CardFooter, Stack, Heading, Text, Image, Divider, Button, ButtonGroup, Container } from '@chakra-ui/react'
+import { Card, CardHeader, CardBody, CardFooter, Stack, Heading, Text, Image, Divider, Button, Flex, Container } from '@chakra-ui/react'
 import ItemCount from './ItemCount';
 import { CartProvider } from '../context/CartContext';
 import { useParams } from 'react-router-dom'
@@ -12,17 +12,17 @@ const ItemDetail = ({productos}) => {
   const {id} =useParams();
   const [product, setProduct] = useState([]);
 
- useEffect(() => {
-  const db = getFirestore();
-  const oneCollection = doc(db, 'designs', `${id}`);
+//  useEffect(() => {
+//   const db = getFirestore();
+//   const oneCollection = doc(db, 'designs', `${id}`);
  
-  getDoc(oneCollection).then((snapshot) => {
-    if (snapshot.exists()) {
-      const docs = snapshot.data();
-      setProduct(docs);
-    }
-  });
-}, [])
+//   getDoc(oneCollection).then((snapshot) => {
+//     if (snapshot.exists()) {
+//       const docs = snapshot.data();
+//       setProduct(docs);
+//     }
+//   });
+// }, [])
 
   const {agregarProductos} = useContext(CartProvider);
    
@@ -36,11 +36,14 @@ const ItemDetail = ({productos}) => {
   return (
     
     <>
-    {/* {console.log(productos)} */}
+    <Card>
+    <CardBody>
+    <Flex justifyContent='center' gap='4'>
+         
     
-    {console.log()}
       {productos.map((prod) => {
         return(
+
           <div key={prod.id}>
           <Card maxW='sm'>
           <CardBody>
@@ -58,6 +61,7 @@ const ItemDetail = ({productos}) => {
             </Stack>
           </CardBody>
           <Divider />
+          <CardFooter>
           <ItemCount 
           onAdd={onAdd}
           nombre = {prod.nombre}
@@ -67,12 +71,15 @@ const ItemDetail = ({productos}) => {
           img = {prod.img}
           prod={prod}
           />
+          </CardFooter>
          </Card>
         </div>
        )
       })}
     
-   
+    </Flex>
+    </CardBody> 
+    </Card>
     </>
   )
 }
