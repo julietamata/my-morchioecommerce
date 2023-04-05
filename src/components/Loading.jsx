@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react'
 import image3 from '../assets/images/pngegg.png'
 import { Link } from 'react-router-dom'
 import { Button, CardHeader, Heading, CardBody, Image, CardFooter, Card, SimpleGrid, Box, } from '@chakra-ui/react'
-import { collection, getDocs, getFirestore } from 'firebase/firestore'
 
 
 

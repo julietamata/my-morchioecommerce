@@ -1,6 +1,6 @@
 import React from 'react'
 import CartWidget from './CartWidget'
-import { Button, Stack, Flex, Box, Spacer, Heading, Text} from '@chakra-ui/react'
+import { Button, Stack, Flex, Box, Spacer, Heading } from '@chakra-ui/react'
 import {Link} from "react-router-dom"
 
 const NavBar = () => {

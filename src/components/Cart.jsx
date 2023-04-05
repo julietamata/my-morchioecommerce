@@ -12,7 +12,7 @@ const Cart = () => {
   const eliminarProducto = (id) => {
     setCart(cart.filter(prod => prod.id !==id))
   }
-  // {cart.map ((prod) =>{
+  
 
     if (cart.length === 0){
       return(
@@ -72,47 +72,13 @@ const Cart = () => {
      </Card>
         </>
       )
-    // })}
+    
     }
 
 export default Cart
 
 
 
-
-// return (
-//   <div>
-  
-// {/* <Container key={prod.id}> */}
-// {/* <Card maxW='sm'>
-// <CardBody>
-//   <Image
-//     src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
-//     alt='Green double couch with wooden legs'
-//     borderRadius='lg'
-//   />
-//   <Stack mt='6' spacing='3'>
-//     <Heading size='md'>{prod.nombre}</Heading>
-//     <Text color='blue.600' fontSize='2xl'>
-//      $ {prod.precio}
-//     </Text>
-//     <Text color='blue.600' fontSize='2xl'>
-//       {prod.quantity}
-//     </Text>
-//     <Button onClick={() => deleteProd()}>
-//       Eliminar producto
-//     </Button>
-//   </Stack>
-// </CardBody>
-// <Divider />
-// <CardFooter>
-//    <CartForm/>
-// </CardFooter>
-// </Card> */}
-// {/* </Container> */}
-   
-//   </div>
-// )
 
 
 

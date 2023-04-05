@@ -1,10 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react'
 import data from '../../data.json'
-import { Card, CardHeader, CardBody, CardFooter, Stack, Heading, Text, Image, Divider, Button, Flex, Container } from '@chakra-ui/react'
+import { Card, CardBody, CardFooter, Stack, Heading, Text, Image, Divider, Button, Flex, Container } from '@chakra-ui/react'
 import ItemCount from './ItemCount';
 import { CartProvider } from '../context/CartContext';
 import { useParams } from 'react-router-dom'
-import Item from './Item';
 import {getDoc, getFirestore, doc} from 'firebase/firestore'
 
 
@@ -28,7 +27,7 @@ const ItemDetail = ({productos}) => {
    
 
   const onAdd =(prod, quantity) => {
-    console.log(`compraste ${quantity}`)
+    
     agregarProductos(prod, quantity);
     
   }

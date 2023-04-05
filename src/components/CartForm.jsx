@@ -1,14 +1,20 @@
 import React from 'react'
-// import {collection, addDoc, getFirestore} from "firebase/firestore"
+import {collection, addDoc, getFirestore} from "firebase/firestore"
 import { useState } from 'react'
 import {FormControl, FormLabel, FormErrorMessage, FormHelperText, Input, Button, Flex, Box, Grid, Card, CardBody  } from '@chakra-ui/react'
-  
+import { useContext } from 'react'
+import { CartProvider } from '../context/CartContext'
 
 const CartForm = () => {
 
+  const {cart, totalCarrito, productosCarrito} = useContext(CartProvider);
+  
 
+const [orderId, setOrderId] = useState(null)
 const [name, setName] = useState('')
 const [email, setEmail] = useState('')
+
+  const db =  getFirestore();
 
   const handleName = (e) => setName(e.target.value)
   const handleEmail = (e) => setEmail(e.target.value)
@@ -16,13 +22,26 @@ const [email, setEmail] = useState('')
   const isError = name === ''
   const isErrors = email === ''
 
+  const handleSubmit=(e)=>{
+    e.preventDefault();
+    addDoc(orderCollection, order).then(({id}) => setOrderId(id));
+  };
+
+  const order = {
+    name, email, Items: cart.map(prod =>({id: prod.id, nombre: prod.nombre, precio: prod.precio }))
+  };
+
+  const orderCollection= collection(db, "orden");
+
+
   return (
     <div>
+      <form onSubmit={handleSubmit}>
         <Card> <CardBody> <Flex alignItems='center' justifyContent='center' >  
          <Box w='330px' >
         <FormControl isInvalid={isError}>
       <FormLabel>Nombre</FormLabel>
-      <Input type='email' value={name} onChange={handleName} />
+      <Input value={name} onChange={handleName} />
       {!isError ? (
         <FormHelperText>
           Ingrese su nombre de usuario para crear su nueva cuenta.
@@ -46,10 +65,11 @@ const [email, setEmail] = useState('')
         <FormErrorMessage>Ingrese un correo electrónico</FormErrorMessage>
       )}
     </FormControl>  
-    
+    <p>Orden No. {orderId}</p>
     </Box>
     </Flex>
 </CardBody> </Card>
+</form>
     </div>
 
 
@@ -58,17 +78,3 @@ const [email, setEmail] = useState('')
 
 export default CartForm
 
-// const [name, setName] = useState("");
-// const [email, setEmail] = useState("");
-// const [orderId, setOrderId] =useState(null);
-// FORMULARIO
-// <form onSubmit={handleSubmit}>
-//   <input type="text" placeholder='Nombre y Apellido' onChange={(e)=>setName(e.target.value)} />
-//   <input type="text" placeholder='Email' onChange={(e)=>setEmail(e.target.value)} />
-//   <button type='submit'>Enviar info</button>
-
-// </form>
-
-// <p>No. de orden: {orderId}</p>
-
-// border='1px' borderColor='gray.200'

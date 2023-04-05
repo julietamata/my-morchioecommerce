@@ -1,6 +1,6 @@
 import React from 'react'
 import Item from './Item'
-import { Container, Flex, Card, CardBody, SimpleGrid } from '@chakra-ui/react'
+import { SimpleGrid } from '@chakra-ui/react'
 
 const ItemListt = ({productos}) => {
   return (
@@ -9,7 +9,6 @@ const ItemListt = ({productos}) => {
     
        {console.log(productos)}
     {<div>
-      {/* <Flex justifyContent='center' gap='6'> */}
      <SimpleGrid
      columns={{ sm: 1, md: 3}}
      spacing='8'
@@ -39,7 +38,7 @@ const ItemListt = ({productos}) => {
       
 
       </SimpleGrid>
-      {/* </Flex> */}
+    
     </div>}  
     
 

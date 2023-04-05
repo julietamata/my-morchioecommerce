@@ -1,14 +1,12 @@
-import React, {useContext} from 'react'
+
 import { useState } from 'react';
-import { Button, ButtonGroup, Flex, Stack, Text, CardFooter, Box  } from '@chakra-ui/react'
+import { Button, ButtonGroup, Stack } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import { CartProvider } from '../context/CartContext';
-import Item from './Item';
 
 
-const ItemCount = ({stock, nombre, precio, img, id, onAdd, prod }) => {
-  const {agregarProductos, saludo} = useContext(CartProvider);
-  const [cantidad, setCantidad] = useState(1);
+
+const ItemCount = ({stock, onAdd, prod }) => {
+    const [cantidad, setCantidad] = useState(1);
 
   const sumar = () => {
     cantidad >= stock ? alert("Lo sentimos, no hay suficientes productos disponibles") : setCantidad(cantidad + 1)};
@@ -45,5 +43,3 @@ const ItemCount = ({stock, nombre, precio, img, id, onAdd, prod }) => {
   
 export default ItemCount
 
-
-//agregarlo en list y el stock

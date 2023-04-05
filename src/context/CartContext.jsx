@@ -32,9 +32,6 @@ const CartContext = ({children}) => {
     const borrarCarrito = () => setCart([]);
 
     
-    const saludo = () => {
-      console.log('Hola!')
-    }
   return (
     <CartProvider.Provider value= {{borrarCarrito, agregarProductos,productosCarrito, totalCarrito, cart, setCart}}>
         {children}
@@ -45,23 +42,3 @@ const CartContext = ({children}) => {
 
 export default CartContext; 
 
-
-
-// const agregarProductos = () => {
-//   setCart((productosExistentes) => {
-//     const productoExistente = productosExistentes.find((prod) => prod.id === id)
-    
-//     if (productoExistente) {
-//       return productosExistentes.map((prod) => {
-       
-//        if (prod.id === id) {
-//         return {...prod, quantity: prod.quantity + cantidad}
-//       } else{
-//         return prod;
-//       }
-//     });
-//   }else{
-//     return [...productosExistentes, { prod, quantity: nombre, precio, img, cantidad}]
-//   }
-//   });
-//   };

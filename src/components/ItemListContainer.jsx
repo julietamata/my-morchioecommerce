@@ -1,4 +1,3 @@
-import { Flex, Box, HStack } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import data from '../../data.json'
@@ -25,18 +24,7 @@ const ItemListContainer = () => {
     
     }, []);
 
-    // useEffect(() => {
-    //   const db = getFirestore();
-    //   const itemsCollection = collection(db, "designs");
-    //   getDocs(itemsCollection)
-    //   .then((snapshot) =>{
-    //     const productos= snapshot.docs.map((doc) =>
-    //      doc.data());
-    //     console.log(productos);
-    //     setProductos(docs)
-    //   });
     
-    // }, []);
 
   //   useEffect(() => {
   // const getDatos = () =>{
@@ -71,9 +59,15 @@ export default ItemListContainer
 
 
 
-    // useEffect(() => {
+   // useEffect(() => {
     //   const db = getFirestore();
     //   const itemsCollection = collection(db, "designs");
     //   getDocs(itemsCollection)
-    //   .then(res => setProductos(res.docs.map(product => ({id: product.id, ...product.productos() }))));  
-    // }, [category]);
+    //   .then((snapshot) =>{
+    //     const productos= snapshot.docs.map((doc) =>
+    //      doc.data());
+    //     console.log(productos);
+    //     setProductos(docs)
+    //   });
+    
+    // }, []);
