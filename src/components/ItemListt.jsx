@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react'
 import Item from './Item'
 import { SimpleGrid } from '@chakra-ui/react'
 import {getDoc, getFirestore, doc} from 'firebase/firestore'
+import { useParams } from 'react-router-dom'
 
-const ItemListt = ({producto}) => {
+const ItemListt = ({productos}) => {
+
+  const {category} = useParams();
 
 //  useEffect(() => {
 //   const db = getFirestore();
@@ -17,15 +20,18 @@ const ItemListt = ({producto}) => {
 //   });
 // }, [])
 
+const filtroCategory = productos.filter((prod) => prod.category == category);
+
+
   return (
     <>
     
     
-    {console.log(producto)}
+    {console.log(productos)}
     {<div>
      <SimpleGrid columns={{ sm: 1, md: 3}} spacing='8' p='10' justifyContent='center'>
      
-     {producto.map((prod) => {
+     {productos.map((prod) => {
           
                   return(
                   <Item
