@@ -22,7 +22,7 @@ const App = ()=> {
     <Routes>
     <Route exact path="/" element={<Home/>}/>
     <Route exact path="/catalogo" element={<ItemListContainer/>}/>
-    <Route exact path="/category/:category" element={<ItemListContainer/>}/>
+    <Route exact path="/category/:categoria" element={<ItemListContainer/>}/>
     <Route exact path="/producto/:id" element={<ItemDetailContainer/>}/>
     <Route exact path="/carrito" element={<Cart/>}></Route>
     </Routes>
